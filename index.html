@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Game</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+	  
+    <div id="background">
+		<div id="bg"><img src="images/bg.png"></div>
+		<div id="door" style="display:none"><img style="cursor: zoom-in;" src="images/door.png" onclick="getNext('door');"></div>
+		<div id="periodic" style="display:none"><img style="cursor: zoom-in;" src="images/periodic.png" onclick="getNext('periodic');"></div>
+		<div id="board" style="display:none"><img style="cursor: zoom-in;" src="images/board.png" onclick="getNext('board');"></div>
+		<div id="tableauaffichage" style="display:none"><img style="cursor: zoom-in;" src="images/tableauaffichage.png" onclick="getNext('ta');"></div>
+	</div>
+	
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+	  <div class="modal-content" id="modalcontent">		
+		<div id="container" style="text-align: center">
+			<h1>Écrivez votre nom:</h1>
+			
+			<form onsubmit="getNext('about');return false">
+				<input id="nom" name="nom" type="text" style="width: 100%;" required>
+				<input value="Continuer" type="submit" style="margin: 10px;">
+			</form>
+			
+		</div>
+	  </div>
+
+	</div>
+	
+	<script>
+		
+		var modal = document.getElementById("myModal");
+		modal.style.display = "block";
+		
+		var nom;
+		var q1 = "";
+		var q2 = "";
+		var q3 = "";
+		
+		function getNext(page){
+			var container = document.querySelector("#container");
+			
+			if(page == "about"){
+				nom = document.querySelector("#nom").value;
+				container.innerHTML = `
+					<h1>About</h1>
+					
+					<p>ahla hello hallo aloha hola <b>${nom}</b></p>
+					
+					<input value="Continuer" type="submit" style="margin: 10px;" onclick="getNext('game');">
+				`;
+			}
+			
+			if(page == "game"){
+				document.querySelector("#door").style.display = "block";
+				document.querySelector("#periodic").style.display = "block";
+				document.querySelector("#board").style.display = "block";
+				document.querySelector("#tableauaffichage").style.display = "block";
+				modal.style.display = "none";
+				container.innerHTML = ``;
+			}
+			
+			if(page == "door"){
+				modal.style.display = "block";
+				container.innerHTML = `
+					<h1>Porte fermé</h1>
+					
+					<p>Écrivez le code pour ouvrir:</p>
+					
+					<form onsubmit="getNext('open');return false">
+						<input id="code" name="code" type="text" style="width: 100%;" required>
+						<input value="Continuer" type="submit" style="margin: 10px;">
+					</form>
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "periodic"){
+				modal.style.display = "block";
+				container.innerHTML = `
+					<h1>Tableau périodique</h1>
+					
+					<img style="height:120vh;" src="images/periodic_hd.png">
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "ta"){
+				modal.style.display = "block";
+				container.innerHTML = `
+					<h1>Tableau d'affichage</h1>
+					
+					<p>scqlknqdslknsqd</p>
+					<p>scqlknqdslknsqd</p>
+					<p>scqlknqdslknsqd</p>
+					<p>scqlknqdslknsqd</p>
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "board"){
+				modal.style.display = "block";
+				container.innerHTML = `
+					<h1>Répond au questions pour trouver le code</h1>
+					
+					<p>1) qdqsdq?</p>
+					
+					<form onsubmit="getNext('q2');return false">
+						<input value='${q1}' id="q1" name="q1" type="text" style="width: 100%;" required>
+						<input value="Continuer" type="submit" style="margin: 10px;">
+					</form>
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "q2"){
+				q1 = document.querySelector("#q1").value;
+				container.innerHTML = `
+					<h1>Répond au questions pour trouver le code</h1>
+					
+					<p>2) qdqsdq?</p>
+					
+					<form onsubmit="getNext('q3');return false">
+						<input value='${q2}' id="q2" name="q2" type="text" style="width: 100%;" required>
+						<input value="Continuer" type="submit" style="margin: 10px;">
+					</form>
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "q3"){
+				q2 = document.querySelector("#q2").value;
+				container.innerHTML = `
+					<h1>Répond au questions pour trouver le code</h1>
+					
+					<p>3) qdqsdq?</p>
+					
+					<form onsubmit="getNext('over');return false">
+						<input value='${q3}' id="q3" name="q3" type="text" style="width: 100%;" required>
+						<input value="Continuer" type="submit" style="margin: 10px;">
+					</form>
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "over"){
+				q3 = document.querySelector("#q3").value;
+				container.innerHTML = `
+					<h1>vos réponses:</h1>
+					
+					<p>${q1}</p>
+					<p>${q2}</p>
+					<p>${q3}</p>
+
+					<input value="Close" type="submit" style="margin: 10px;" onclick="getNext('close');">
+				`;
+			}
+			
+			if(page == "close"){
+				modal.style.display = "none";
+				container.innerHTML = ``;
+			}
+			
+			if(page == "open"){
+				modal.style.display = "block";
+				container.innerHTML = `Félicitations`;
+			}
+		}
+		
+		document.body.style.zoom = window.innerHeight * 100 / 1333 + "%";
+	</script>
+ </body>
+ </html>

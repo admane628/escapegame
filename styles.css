@@ -1,0 +1,97 @@
+ body {
+ background-color:#a8bcf7;
+  margin: 0;
+  padding: 0;
+ }
+ 
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  font-size: 50px;
+}
+
+input {
+	font-size: 50px;
+}
+
+ #background 
+{ 
+	 left: 0px; 
+	 top: 0px; 
+	 position: relative; 
+	 margin-left: auto; 
+	 margin-right: auto; 
+	 width: 2000px;
+	 height: 1333px; 
+	 overflow: hidden;
+	 z-index:0;
+	} 
+
+ #bg 
+{ 
+	 left: 0px; 
+	 top: 0px; 
+	 position: absolute; 
+	 width: 2000px;
+	 height: 1333px;
+	 z-index:1;
+} 
+
+ #door 
+{ 
+	 left: 862px; 
+	 top: 242px; 
+	 position: absolute; 
+	 width: 455px;
+	 height: 750px;
+	 z-index:2;
+} 
+
+ #periodic 
+{ 
+	 left: 241px; 
+	 top: 154px; 
+	 position: absolute; 
+	 width: 350px;
+	 height: 224px;
+	 z-index:3;
+} 
+
+ #board 
+{ 
+	 left: 1423px; 
+	 top: 363px; 
+	 position: absolute; 
+	 width: 533px;
+	 height: 314px;
+	 z-index:4;
+} 
+
+ #tableauaffichage 
+{ 
+	 left: 321px; 
+	 top: 497px; 
+	 position: absolute; 
+	 width: 227px;
+	 height: 285px;
+	 z-index:5;
+} 
